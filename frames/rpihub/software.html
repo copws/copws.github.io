@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>RPi Hub (RC)</title>
+        <link rel="stylesheet" type="text/css" href="model.css">
+        <style type="text/css">
+            #main{
+                margin: 70px auto;
+                width: 900px;
+                background-color: white;
+                border-radius: 7px;
+            }
+            .tools ul{
+                font-size: 18px;
+                list-style: circle;
+                position: relative;
+                right: -20px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div id="title"><span>RPi Hub</span></div>
+            <div class="atarget"><a href="#">首页</a></div>
+            <div class="atarget"><a href="../linux.html">CopWS</a></div>
+        </header>
+
+        <div id="main">
+            <h1>欢迎进入 RPi Hub (RC)！</h1><br><br>
+            <div class="card" style="background-color: #FBAB7E;background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);">
+                <a href="image.html">系统镜像</a>
+            </div>
+            <div class="card" style="background-color: #FA8BFF;background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);">
+                <a href="#">工具合集</a>
+            </div>
+            <div class="card" style="background-color: #A9C9FF;background-image: linear-gradient(180deg, #A9C9FF 0%, #FFBBEC 100%);">
+                <a href="courses.html">教程频道</a>
+            </div>
+        </div>
+
+        <div class="tools">
+            <ul>
+                <li><a href="subframes/sdf.html">SD Card Formatter</a><br>（TF 卡格式化工具，由于Windows自带的格式化功能不是专门针对 TF 卡的，所以需要一个额外的 TF 卡格式化工具）</li>        
+                <li><a href="subframes/rpi.html">Raspberry Pi Imager</a><br>（官方提供的TF卡烧录工具，适配树莓派，新手推荐）</li>
+                <li><a href="subframes/etc.html">balenaEtcher</a><br>（一个功能强大，界面简洁的TF卡烧录工具，不同的是，它也可烧录系统到U盘）</li>
+                <li><a href="subframes/wad.html">树莓派 Windows 驱动</a></li>
+                <li><a href="subframes/efi.html">树莓派 UEFI 固件</a><br>（把树莓派 UEFI 固件放进TF卡的EFI分区，即可让树莓派得到UEFI引导）</li>
+                <li><a href="subframes/nob.html">NOOBS</a><br>（全称 New Out Of Box Software，是树莓派一个全新的安装系统，允许用户在树莓派上安装一个或多个不同的Linux或Windows loT系统）</li>
+                <li><a href="subframes/wor.html">WoR 部署工具</a><br>（全称 Windows on Raspberry ，把 Windows on ARM 写进TF卡的一件必备的工具）</li>
+            </ul>
+        </div>
+    </body>
+</html>
