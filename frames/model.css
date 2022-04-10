@@ -21,7 +21,6 @@
                 background-color: #FFFFFF;
             }
             #img{
-                width: 900px;
                 display: inline-block;
             }
             #img img{
@@ -35,7 +34,8 @@
                 color: darkblue;
                 line-height: 80px;
                 position: relative;
-                top: -25px;
+                left: -50px;
+                float: right;
             }
             #main{
                 margin: 50px auto;
@@ -47,8 +47,8 @@
             }
             footer{
                 text-align: center;
-                background-color: white;
                 height: 40px;
                 line-height: 40px;
                 color: grey;
+                background-color: white;
             }
