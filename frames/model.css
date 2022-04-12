@@ -44,6 +44,7 @@
                 padding: 30px;
                 background-color: #FFFFFF;
                 border-radius: 7px;
+                position: relative;
             }
             footer{
                 text-align: center;
