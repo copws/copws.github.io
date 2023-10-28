@@ -20,28 +20,45 @@
     var CONFIG = {"hostname":"copws.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":{"valine":{"order":-1}},"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Copcin&#39;s Stop">
-<meta property="og:url" content="https://copws.github.io/index.html">
+  <meta name="description" content="这几天刚配置了船新的 Hexo 博客，然后看到使用的 NexT 主题支持很多评论系统。我尝试配置了一下，发现里面坑太多了，真的挺费周章。于是想水一篇分享一下~ 1. 为什么不是……NexT 主题一共支持如下的几个评论系统：  其中我觉得最后一个 Valine 是最好用的，当然也说一下前面几种方法我踩的坑（这里由于 Disqus 需要魔法所以不讨论） 1.1 畅言 &#x2F; Livere这两个评">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo + NexT 博客评论系统（Valine）配置小记">
+<meta property="og:url" content="https://copws.github.io/2023/10/28/14/12/22/index.html">
 <meta property="og:site_name" content="Copcin&#39;s Stop">
+<meta property="og:description" content="这几天刚配置了船新的 Hexo 博客，然后看到使用的 NexT 主题支持很多评论系统。我尝试配置了一下，发现里面坑太多了，真的挺费周章。于是想水一篇分享一下~ 1. 为什么不是……NexT 主题一共支持如下的几个评论系统：  其中我觉得最后一个 Valine 是最好用的，当然也说一下前面几种方法我踩的坑（这里由于 Disqus 需要魔法所以不讨论） 1.1 畅言 &#x2F; Livere这两个评">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231028142301562.png">
+<meta property="og:image" content="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231028144309364.png">
+<meta property="og:image" content="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231028150117154.png">
+<meta property="og:image" content="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231029044028914.png">
+<meta property="og:image" content="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231029044504174.png">
+<meta property="og:image" content="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231029044609998.png">
+<meta property="og:image" content="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231029044857715.png">
+<meta property="og:image" content="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231029051345932.png">
+<meta property="og:image" content="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231029051717591.png">
+<meta property="og:image" content="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231029052041829.png">
+<meta property="article:published_time" content="2023-10-28T06:12:22.000Z">
+<meta property="article:modified_time" content="2023-10-28T21:37:00.000Z">
 <meta property="article:author" content="Copcin">
+<meta property="article:tag" content="站点">
+<meta property="article:tag" content="瞎折腾">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231028142301562.png">
 
-<link rel="canonical" href="https://copws.github.io/">
+<link rel="canonical" href="https://copws.github.io/2023/10/28/14/12/22/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Copcin's Stop</title>
+  <title>Hexo + NexT 博客评论系统（Valine）配置小记 | Copcin's Stop</title>
   
 
 
@@ -154,9 +171,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -172,10 +190,9 @@
       <meta itemprop="name" content="Copcin's Stop">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/10/28/14/12/22/" class="post-title-link" itemprop="url">Hexo + NexT 博客评论系统（Valine）配置小记</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Hexo + NexT 博客评论系统（Valine）配置小记
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -212,6 +229,18 @@
               <span class="leancloud-visitors-count"></span>
             </span>
   
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/10/28/14/12/22/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/10/28/14/12/22/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
   
 
         </div>
@@ -223,7 +252,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>这几天刚配置了船新的 Hexo 博客，然后看到使用的 NexT 主题支持很多评论系统。我尝试配置了一下，发现里面坑太多了，真的挺费周章。于是想<del>水一篇</del>分享一下~</p>
+        <p>这几天刚配置了船新的 Hexo 博客，然后看到使用的 NexT 主题支持很多评论系统。我尝试配置了一下，发现里面坑太多了，真的挺费周章。于是想<del>水一篇</del>分享一下~</p>
 <h2 id="1-为什么不是……"><a href="#1-为什么不是……" class="headerlink" title="1. 为什么不是……"></a>1. 为什么不是……</h2><p>NexT 主题一共支持如下的几个评论系统：</p>
 <p><img src="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231028142301562.png" alt="image-20231028142301562"></p>
 <p>其中我觉得最后一个 Valine 是最好用的，当然也说一下前面几种方法我踩的坑（这里由于 Disqus 需要魔法所以不讨论）</p>
@@ -305,199 +334,58 @@
 <p>P.S 这篇文章同步在 CSDN 博客上。 </p>
 <p>P.P.S 如果你正在我的博客看这篇文章，那么你会在这句话的下面看到 Valine。</p>
 
-      
     </div>
 
     
     
     
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Copcin
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://copws.github.io/2023/10/28/14/12/22/" title="Hexo + NexT 博客评论系统（Valine）配置小记">https://copws.github.io/2023/10/28/14/12/22/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/%E7%AB%99%E7%82%B9/" rel="tag"># 站点</a>
+              <a href="/tags/%E7%9E%8E%E6%8A%98%E8%85%BE/" rel="tag"># 瞎折腾</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://copws.github.io/2023/10/28/08/23/44/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://gitcode.net/raspi_fans/blog-images/-/raw/master/logo.png">
-      <meta itemprop="name" content="Copcin">
-      <meta itemprop="description" content="">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Copcin's Stop">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/10/28/08/23/44/" class="post-title-link" itemprop="url">开站说明</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-10-28 08:23:44 / 修改时间：08:39:00" itemprop="dateCreated datePublished" datetime="2023-10-28T08:23:44+08:00">2023-10-28</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B0%8F%E7%AB%99%E6%9C%89%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">小站有关</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2023/10/28/08/23/44/" class="post-meta-item leancloud_visitors" data-flag-title="开站说明" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>大家好，这是一份简单的开站说明，今天开始我的 GitHub Pages 博客就正式开站了~</p>
-<h2 id="有其它博客吗？"><a href="#有其它博客吗？" class="headerlink" title="有其它博客吗？"></a>有其它博客吗？</h2><p>其实作者还有一个 CSDN 博客 <a target="_blank" rel="noopener" href="https://blog.csdn.net/raspi_fans">https://blog.csdn.net/raspi_fans</a> ，上面主要写关于 IT 的内容，但由于素材匮乏，同时也不太想花太多时间精力写质量比较高的长文，于是 CSDN 博客停更了快 1 年（当然后面肯定会补上的……）</p>
-<h2 id="发些什么？"><a href="#发些什么？" class="headerlink" title="发些什么？"></a>发些什么？</h2><p>这个博客啥都发，包括但不限于编程语言及算法，有关系统折腾和树莓派的一些有的没的，还有一些中高考牲可能需要的一些学习笔记。而 CSDN 我就选一些自己觉得还可以的 IT 博客并且心情好的时候发吧……</p>
-<h2 id="有关小站本身的一些东西"><a href="#有关小站本身的一些东西" class="headerlink" title="有关小站本身的一些东西"></a>有关小站本身的一些东西</h2><p>首先这个站点是在 GitHub Pages 上部署的（其实看链接也能看得出来），博客用的 Hexo 部署。我用的简洁的 NexT + Pisces 主题。</p>
-<p>虽然这是个静态博客，但是普通博客有的它也有，比如分类、存档、标签，甚至评论系统。评论系统我使用 Valine，之前试过畅言、Gitalk、Disqusjs、Gitment 还有 Livere 都没有 Valine 效果好，改天专门写一篇有关这个的。</p>
-<p>另外，图床使用 GitCode 仓库（要不是 GitHub 魔法气息浓郁……）</p>
-<p>P.S. 左边的 Stop 作名词其实是汽车停靠站的意思，不是停止（T_T）</p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/10/28/08/23/44/" rel="prev" title="开站说明">
+      <i class="fa fa-chevron-left"></i> 开站说明
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://copws.github.io/2023/10/28/07/54/17/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://gitcode.net/raspi_fans/blog-images/-/raw/master/logo.png">
-      <meta itemprop="name" content="Copcin">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Copcin's Stop">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/10/28/07/54/17/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-10-28 07:54:17 / 修改时间：06:21:04" itemprop="dateCreated datePublished" datetime="2023-10-28T07:54:17+08:00">2023-10-28</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B0%8F%E7%AB%99%E6%9C%89%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">小站有关</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2023/10/28/07/54/17/" class="post-meta-item leancloud_visitors" data-flag-title="Hello World" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -544,6 +432,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E6%98%AF%E2%80%A6%E2%80%A6"><span class="nav-number">1.</span> <span class="nav-text">1. 为什么不是……</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E7%95%85%E8%A8%80-Livere"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 畅言 &#x2F; Livere</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Gitalk-Gitment"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Gitalk &#x2F; Gitment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-DisqusJS"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 DisqusJS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Valine-%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">2. Valine 配置过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 配置流程</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
