@@ -20,28 +20,34 @@
     var CONFIG = {"hostname":"copws.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":{"valine":{"order":-1}},"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Copcin&#39;s Stop">
-<meta property="og:url" content="https://copws.github.io/index.html">
+  <meta name="description" content="之前我的编程有关的书本网站啥的全部集体吃灰，但是后面报了几个小比赛。然后想极速复习一下之前学的 C++ 知识。废话不多说~ 1. 基础数据类型（只记有用的！） int: ±2^31（-2147483648 ~ 2147483647） double: 10 位有效数字 long long: ±2^63（-9223372036854775808 ~ 9223372036854775807） unsig">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ 极速复习">
+<meta property="og:url" content="https://copws.github.io/2023/11/04/10/17/18/index.html">
 <meta property="og:site_name" content="Copcin&#39;s Stop">
+<meta property="og:description" content="之前我的编程有关的书本网站啥的全部集体吃灰，但是后面报了几个小比赛。然后想极速复习一下之前学的 C++ 知识。废话不多说~ 1. 基础数据类型（只记有用的！） int: ±2^31（-2147483648 ~ 2147483647） double: 10 位有效数字 long long: ±2^63（-9223372036854775808 ~ 9223372036854775807） unsig">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-11-04T02:17:18.000Z">
+<meta property="article:modified_time" content="2023-11-11T21:39:32.000Z">
 <meta property="article:author" content="Copcin">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="编程">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://copws.github.io/">
+<link rel="canonical" href="https://copws.github.io/2023/11/04/10/17/18/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Copcin's Stop</title>
+  <title>C++ 极速复习 | Copcin's Stop</title>
   
 
 
@@ -154,9 +160,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -172,10 +179,9 @@
       <meta itemprop="name" content="Copcin's Stop">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/11/04/10/17/18/" class="post-title-link" itemprop="url">C++ 极速复习</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          C++ 极速复习
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -212,6 +218,18 @@
               <span class="leancloud-visitors-count"></span>
             </span>
   
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/11/04/10/17/18/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/11/04/10/17/18/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
   
 
         </div>
@@ -223,7 +241,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>之前我的编程有关的书本网站啥的全部集体吃灰，但是后面报了几个小比赛。然后想极速复习一下之前学的 C++ 知识。废话不多说~</p>
+        <p>之前我的编程有关的书本网站啥的全部集体吃灰，但是后面报了几个小比赛。然后想极速复习一下之前学的 C++ 知识。废话不多说~</p>
 <h2 id="1-基础"><a href="#1-基础" class="headerlink" title="1. 基础"></a>1. 基础</h2><h5 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h5><p>（只记有用的！）</p>
 <p>int: ±2^31（-2147483648 ~ 2147483647）</p>
 <p>double: 10 位有效数字</p>
@@ -327,362 +345,58 @@
 
 <p>需要 using namespace std;。它可以引入 C++ 中的所有库，包括 iostream cstdio vector map 等等非常多。它只存在于 GCC 中，不存在于我之前使用的 MSVC 中，所以一直没发现（T_T）。</p>
 
-      
     </div>
 
     
     
     
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Copcin
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://copws.github.io/2023/11/04/10/17/18/" title="C++ 极速复习">https://copws.github.io/2023/11/04/10/17/18/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C++</a>
+              <a href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag"># 编程</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://copws.github.io/2023/10/28/14/12/22/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://gitcode.net/raspi_fans/blog-images/-/raw/master/logo.png">
-      <meta itemprop="name" content="Copcin">
-      <meta itemprop="description" content="">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Copcin's Stop">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/10/28/14/12/22/" class="post-title-link" itemprop="url">Hexo + NexT 博客评论系统（Valine）配置小记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-10-28 14:12:22" itemprop="dateCreated datePublished" datetime="2023-10-28T14:12:22+08:00">2023-10-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-29 05:37:00" itemprop="dateModified" datetime="2023-10-29T05:37:00+08:00">2023-10-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">折腾笔记</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2023/10/28/14/12/22/" class="post-meta-item leancloud_visitors" data-flag-title="Hexo + NexT 博客评论系统（Valine）配置小记" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>这几天刚配置了船新的 Hexo 博客，然后看到使用的 NexT 主题支持很多评论系统。我尝试配置了一下，发现里面坑太多了，真的挺费周章。于是想<del>水一篇</del>分享一下~</p>
-<h2 id="1-为什么不是……"><a href="#1-为什么不是……" class="headerlink" title="1. 为什么不是……"></a>1. 为什么不是……</h2><p>NexT 主题一共支持如下的几个评论系统：</p>
-<p><img src="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231028142301562.png" alt="image-20231028142301562"></p>
-<p>其中我觉得最后一个 Valine 是最好用的，当然也说一下前面几种方法我踩的坑（这里由于 Disqus 需要魔法所以不讨论）</p>
-<h3 id="1-1-畅言-Livere"><a href="#1-1-畅言-Livere" class="headerlink" title="1.1 畅言 &#x2F; Livere"></a>1.1 畅言 &#x2F; Livere</h3><p>这两个评论系统都是来自专门做评论的公司，只不过<a target="_blank" rel="noopener" href="https://changyan.kuaizhan.com/">畅言</a>是中国（搜狐）的，而 <a target="_blank" rel="noopener" href="https://livere.com/">Livere</a> 是韩国的，音译来必力，不过无需魔法。它们有相同的特点：配置简单，日常使用免费，但是需要登录评论公司或其它的账号（比如畅言需要登录畅言或手机号、微信等账号才能发表评论）才能评论。</p>
-<p>再者，畅言的评论系统看起来是真的有点…古老……</p>
-<p><img src="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231028144309364.png" alt="image-20231028144309364"></p>
-<p>反正如果你不想折腾，并且不担心读者体验，可以尝试使用它们。安装方法很懒人，直接在它们的网站上注册免费版，然后把 appid 和 appkey 复制粘贴至 NexT 的 _config.yml 即可。</p>
-<h3 id="1-2-Gitalk-Gitment"><a href="#1-2-Gitalk-Gitment" class="headerlink" title="1.2 Gitalk &#x2F; Gitment"></a>1.2 Gitalk &#x2F; Gitment</h3><p>这两个是基于 GitHub Issues 的评论系统。NexT 貌似只支持 Gitalk。它们可以在 GitHub 上轻松找到。它们几乎是完美的：只需登录 GitHub 即可评论（不过貌似对非 IT 博客有些不友好）；基于 GitHub Issues，无后端，开源，免费，管理方便。</p>
-<p>但是它们有致命的问题：GitHub 自动创建 Issues 的 API 有用量限制，所以只能被迫使用第三方 API。Gitment 面对这个问题直接躺平，而 Gitalk 默认的 API 又随着 Cloudflare 的被墙被迫需要魔法，改 API 我试了很多次也没成功……</p>
-<p><img src="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231028150117154.png" alt="image-20231028150117154"></p>
-<p>所以这个方案我也只能被迫放弃。如果你热爱折腾，并且恰好魔法高强，可以逝世。</p>
-<h3 id="1-3-DisqusJS"><a href="#1-3-DisqusJS" class="headerlink" title="1.3 DisqusJS"></a>1.3 DisqusJS</h3><p>这是国内大神 Sukka 写的一个访问 Disqus“评论基础模式”的评论系统。前文已经说过 Disqus 需要魔法，而 DisqusJS 可以打破魔法。不过它也有一个致命缺点：不能发评论，只能看别人的评论。再者最近好像 DisqusJS 也年久失修，无法正常使用了。</p>
-<p>如果你对 DisqusJS 感兴趣，可以去 <a target="_blank" rel="noopener" href="https://blog.skk.moe/post/disqusjs/">https://blog.skk.moe/post/disqusjs/</a> 看看，但我觉得没啥用……</p>
-<h2 id="2-Valine-配置过程"><a href="#2-Valine-配置过程" class="headerlink" title="2. Valine 配置过程"></a>2. Valine 配置过程</h2><p>最后我选择了最后一个 <a target="_blank" rel="noopener" href="https://valine.js.org/">Valine</a>。Valine 轻量级，无后端，无需登陆账号即可发表评论，且开源免费，无需魔法，并且真的很好看：</p>
-<p><img src="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231029044028914.png" alt="image-20231029044028914"></p>
-<h3 id="2-1-配置流程"><a href="#2-1-配置流程" class="headerlink" title="2.1 配置流程"></a>2.1 配置流程</h3><p>Valine 的配置不是很复杂。它基于 <a target="_blank" rel="noopener" href="https://leancloud.cn/">LeanCloud</a>，所以得先在 LeanCloud 上注册一个账号。注册完可能要实名。</p>
-<p>然后新建一个开发版项目，名字随便填：</p>
-<p><img src="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231029044504174.png" alt="image-20231029044504174"></p>
-<p><img src="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231029044609998.png" alt="image-20231029044609998"></p>
-<p>然后打开设置 - 应用凭证，复制 AppID 与 AppKey：</p>
-<p><img src="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231029044857715.png" alt="image-20231029044857715"></p>
-<p>然后前往设置 - 安全中心，设置一个安全域名，即你的博客所用的域名。Valine 有请求限制，即非安全域名对 LeanCloud 的请求都不会放行，即你不设置安全域名，到时候评论就用不了。但 localhost 不用设置，LeanCloud 自动放行。如下：</p>
-<p><img src="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231029051345932.png" alt="image-20231029051345932"></p>
-<p>然后转到 NexT 的 _config.yml，找到 comments 一栏（大概在第 550 行左右，或者 Ctrl + F），将 active 改成 valine，nav 改成如图所示的样子：</p>
-<p><img src="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231029051717591.png" alt="image-20231029051717591"></p>
-<p>往下滑找到 valine，将 enable 改为 true，然后粘贴 appid 和 appkey：</p>
-<p><img src="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231029052041829.png" alt="image-20231029052041829"></p>
-<p>下面还有几个选项，挑几个好用的说一下：</p>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>默认值</th>
-<th>含义及作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>notify</td>
-<td>false</td>
-<td>邮件提醒你文章被评论了，LeanCloud 的功能</td>
-</tr>
-<tr>
-<td>verify</td>
-<td>false</td>
-<td>好像是是否需要验证码，没试过</td>
-</tr>
-<tr>
-<td>placeholder</td>
-<td>Just go go.</td>
-<td>评论框的默认填充</td>
-</tr>
-<tr>
-<td>guest_info</td>
-<td>nick,mail,link</td>
-<td>评论者可以填写的个人信息。nick 为名字，mail 为邮箱，link 为评论者博客的网址。举个例子，如果你填 <strong>nick,link</strong>，那就不能填写邮箱。</td>
-</tr>
-<tr>
-<td>pageSize</td>
-<td>10</td>
-<td>每一页显示的评论条数</td>
-</tr>
-<tr>
-<td>language</td>
-<td>zh-cn</td>
-<td>语言，支持英语 en 和简体中文 zh-cn</td>
-</tr>
-<tr>
-<td>visitor</td>
-<td>false</td>
-<td>统计文章被阅读过几次。这个功能有点牛，作为一个评论系统竟然实现了统计阅读次数功能~</td>
-</tr>
-<tr>
-<td>comment_count</td>
-<td>true</td>
-<td>是否在博客主页显示评论数</td>
-</tr>
-</tbody></table>
-<p>大功告成！</p>
-<p>P.S 这篇文章同步在 CSDN 博客上。 </p>
-<p>P.P.S 如果你正在我的博客看这篇文章，那么你会在这句话的下面看到 Valine。</p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/10/28/14/12/22/" rel="prev" title="Hexo + NexT 博客评论系统（Valine）配置小记">
+      <i class="fa fa-chevron-left"></i> Hexo + NexT 博客评论系统（Valine）配置小记
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://copws.github.io/2023/10/28/08/23/44/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://gitcode.net/raspi_fans/blog-images/-/raw/master/logo.png">
-      <meta itemprop="name" content="Copcin">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Copcin's Stop">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/10/28/08/23/44/" class="post-title-link" itemprop="url">开站说明</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-10-28 08:23:44 / 修改时间：08:39:00" itemprop="dateCreated datePublished" datetime="2023-10-28T08:23:44+08:00">2023-10-28</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B0%8F%E7%AB%99%E6%9C%89%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">小站有关</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2023/10/28/08/23/44/" class="post-meta-item leancloud_visitors" data-flag-title="开站说明" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>大家好，这是一份简单的开站说明，今天开始我的 GitHub Pages 博客就正式开站了~</p>
-<h2 id="有其它博客吗？"><a href="#有其它博客吗？" class="headerlink" title="有其它博客吗？"></a>有其它博客吗？</h2><p>其实作者还有一个 CSDN 博客 <a target="_blank" rel="noopener" href="https://blog.csdn.net/raspi_fans">https://blog.csdn.net/raspi_fans</a> ，上面主要写关于 IT 的内容，但由于素材匮乏，同时也不太想花太多时间精力写质量比较高的长文，于是 CSDN 博客停更了快 1 年（当然后面肯定会补上的……）</p>
-<h2 id="发些什么？"><a href="#发些什么？" class="headerlink" title="发些什么？"></a>发些什么？</h2><p>这个博客啥都发，包括但不限于编程语言及算法，有关系统折腾和树莓派的一些有的没的，还有一些中高考牲可能需要的一些学习笔记。而 CSDN 我就选一些自己觉得还可以的 IT 博客并且心情好的时候发吧……</p>
-<h2 id="有关小站本身的一些东西"><a href="#有关小站本身的一些东西" class="headerlink" title="有关小站本身的一些东西"></a>有关小站本身的一些东西</h2><p>首先这个站点是在 GitHub Pages 上部署的（其实看链接也能看得出来），博客用的 Hexo 部署。我用的简洁的 NexT + Pisces 主题。</p>
-<p>虽然这是个静态博客，但是普通博客有的它也有，比如分类、存档、标签，甚至评论系统。评论系统我使用 Valine，之前试过畅言、Gitalk、Disqusjs、Gitment 还有 Livere 都没有 Valine 效果好，改天专门写一篇有关这个的。</p>
-<p>另外，图床使用 GitCode 仓库（要不是 GitHub 魔法气息浓郁……）</p>
-<p>P.S. 左边的 Stop 作名词其实是汽车停靠站的意思，不是停止（T_T）</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://copws.github.io/2023/10/28/07/54/17/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://gitcode.net/raspi_fans/blog-images/-/raw/master/logo.png">
-      <meta itemprop="name" content="Copcin">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Copcin's Stop">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/10/28/07/54/17/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-10-28 07:54:17 / 修改时间：06:21:04" itemprop="dateCreated datePublished" datetime="2023-10-28T07:54:17+08:00">2023-10-28</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B0%8F%E7%AB%99%E6%9C%89%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">小站有关</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2023/10/28/07/54/17/" class="post-meta-item leancloud_visitors" data-flag-title="Hello World" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -729,6 +443,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%9F%BA%E7%A1%80"><span class="nav-text">1. 基础</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-text">操作符优先级</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-text">类型转换</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#printf-scanf"><span class="nav-text">printf scanf</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#while"><span class="nav-text">while</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%8C%87%E9%92%88%E4%B8%8E%E5%86%85%E5%AD%98"><span class="nav-text">2. 指针与内存</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-text">指针初始化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E5%BC%95%E7%94%A8"><span class="nav-text">解引用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%96%E5%9C%B0%E5%9D%80"><span class="nav-text">取地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#memset"><span class="nav-text">memset</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%87%BD%E6%95%B0%E6%9C%89%E5%85%B3"><span class="nav-text">3. 函数有关</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BC%A0%E5%8F%82%E6%9C%89%E5%85%B3"><span class="nav-text">传参有关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0"><span class="nav-text">内联函数</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E7%BB%93%E6%9E%84%E4%BD%93"><span class="nav-text">4. 结构体</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">结构体的使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%8E%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E9%85%8D%E5%90%88%E4%BD%BF%E7%94%A8"><span class="nav-text">结构体与普通函数配合使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E6%8C%87%E9%92%88"><span class="nav-text">结构体指针</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%85%B6%E5%AE%83"><span class="nav-text">5. 其它</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#sizeof"><span class="nav-text">sizeof()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#auto"><span class="nav-text">auto</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%87%E8%83%BD%E5%A4%B4"><span class="nav-text">万能头</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
