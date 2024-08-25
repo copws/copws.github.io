@@ -20,28 +20,61 @@
     var CONFIG = {"hostname":"copws.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":{"valine":{"order":-1}},"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Copcin&#39;s Blog">
-<meta property="og:url" content="https://copws.github.io/index.html">
+  <meta name="description" content="最近想要用 Notion 记笔记，奈何 Notion 的标签分类功能确实不太好用…… 看了看其它文章中配置多级标签的繁杂流程之后，我觉得还是写一个插件比较靠谱…… 本文主要介绍 Notion 简单的插件开发，编程语言使用 JavaScript，所以熟悉 JS 的同学应该很快就能上手。官网链接：https:&#x2F;&#x2F;developers.notion.com&#x2F;docs&#x2F;getting-started，英语">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Notion 插件开发入门">
+<meta property="og:url" content="https://copws.github.io/2024/08/19/17/38/23/index.html">
 <meta property="og:site_name" content="Copcin&#39;s Blog">
+<meta property="og:description" content="最近想要用 Notion 记笔记，奈何 Notion 的标签分类功能确实不太好用…… 看了看其它文章中配置多级标签的繁杂流程之后，我觉得还是写一个插件比较靠谱…… 本文主要介绍 Notion 简单的插件开发，编程语言使用 JavaScript，所以熟悉 JS 的同学应该很快就能上手。官网链接：https:&#x2F;&#x2F;developers.notion.com&#x2F;docs&#x2F;getting-started，英语">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/91e376591c5eda1efb0e8ecf03d03410.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/87b969ccb23848db94f10d0361ab3c75.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/54a6a84f845913a76e920c811f0fff89.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/0c9e443743bc663bd4913d3ab4a27042.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/158a43db458bfa74397f1142ba54a140.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/73b8c314414305f0cc34c1afe4c171be.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/a3b77ef03901a86970f074c5df1644f1.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/6df10a8ae672f4bc7e85068040bbb70e.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/36573323715631237be48fd153a631b6.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/211aa26917fe064d4d39f8619f0d1a49.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/1f602537ed2d4af5e9807c6d468a5ff6.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/43e5a67dda00dd0dc264bc86cd2e13cb.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/d1558a53a40557746aeae59f9fbcd173.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/2428417b36aec836a41217b2f8cd765c.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/96734ee3fa3206ed378687668f18461a.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/b537fe899b5d383c542d770333afddc4.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/cc6629e481d4c6408b480adc8998a0f4.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/e207e8dda6b15dd8627eb62f0596679d.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/cdc191d258273f850ba371c3b7716af9.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/471efc5251956130d0eeae0907e7d97c.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/99c2256be698e5b716e735affc247c7d.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/0cb62a25ac45b6e77a66256fd78e0305.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/45e49b763d1bce7e24333a554d37e57b.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/19a92db3f71d607bb54e70bc6071b9c0.png">
+<meta property="article:published_time" content="2024-08-19T09:38:23.000Z">
+<meta property="article:modified_time" content="2024-08-25T02:52:26.000Z">
 <meta property="article:author" content="Copcin">
+<meta property="article:tag" content="站点">
+<meta property="article:tag" content="瞎折腾">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="前端">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/91e376591c5eda1efb0e8ecf03d03410.png">
 
-<link rel="canonical" href="https://copws.github.io/">
+<link rel="canonical" href="https://copws.github.io/2024/08/19/17/38/23/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Copcin's Blog</title>
+  <title>Notion 插件开发入门 | Copcin's Blog</title>
   
 
 
@@ -154,9 +187,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -172,10 +206,9 @@
       <meta itemprop="name" content="Copcin's Blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/08/19/17/38/23/" class="post-title-link" itemprop="url">Notion 插件开发入门</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Notion 插件开发入门
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -212,6 +245,18 @@
               <span class="leancloud-visitors-count"></span>
             </span>
   
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2024/08/19/17/38/23/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/08/19/17/38/23/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
   
 
         </div>
@@ -223,7 +268,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>最近想要用 Notion 记笔记，奈何 Notion 的标签分类功能确实不太好用…… 看了看其它文章中配置多级标签的繁杂流程之后，我觉得还是写一个插件比较靠谱……</p>
+        <p>最近想要用 Notion 记笔记，奈何 Notion 的标签分类功能确实不太好用…… 看了看其它文章中配置多级标签的繁杂流程之后，我觉得还是写一个插件比较靠谱……</p>
 <p>本文主要介绍 Notion 简单的插件开发，编程语言使用 JavaScript，所以熟悉 JS 的同学应该很快就能上手。官网链接：<a target="_blank" rel="noopener" href="https://developers.notion.com/docs/getting-started%EF%BC%8C%E8%8B%B1%E8%AF%AD%E5%A5%BD%E7%9A%84%E5%90%8C%E5%AD%A6%E8%87%AA%E5%8F%96%E3%80%82">https://developers.notion.com/docs/getting-started，英语好的同学自取。</a></p>
 <h2 id="1-Notion-数据库"><a href="#1-Notion-数据库" class="headerlink" title="1. Notion 数据库"></a>1. Notion 数据库</h2><p>Notion 的灵魂在于数据库，它是 Notion 中最强大也最复杂的功能。下面简单梳理一下 Notion 数据库会用到的知识，其它内容估计自己试试也能摸索出来。数据库官方文档：<a target="_blank" rel="noopener" href="https://www.notion.so/zh-cn/help/category/databases%E3%80%82">https://www.notion.so/zh-cn/help/category/databases。</a></p>
 <h3 id="1-1-数据库是什么"><a href="#1-1-数据库是什么" class="headerlink" title="1.1 数据库是什么"></a>1.1 数据库是什么</h3><p>简单来说，数据库是一个包含了多个 Notion 页面的集合。数据库可以以多种视图动态展现数据库下的页面：</p>
@@ -374,547 +419,60 @@
 <p>最后，Enjoy it~</p>
 <p>参考：<br> <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/679456951">Notion API 探索笔记（一）</a><br> <a target="_blank" rel="noopener" href="https://developers.notion.com/reference/intro">Notion Developers API Reference</a><br> <a target="_blank" rel="noopener" href="https://developers.notion.com/docs/getting-started">Notion Developers Guides</a></p>
 
-      
     </div>
 
     
     
     
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Copcin
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://copws.github.io/2024/08/19/17/38/23/" title="Notion 插件开发入门">https://copws.github.io/2024/08/19/17/38/23/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/%E7%AB%99%E7%82%B9/" rel="tag"># 站点</a>
+              <a href="/tags/%E7%9E%8E%E6%8A%98%E8%85%BE/" rel="tag"># 瞎折腾</a>
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://copws.github.io/2023/11/04/10/17/18/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://gitcode.net/raspi_fans/blog-images/-/raw/master/logo.png">
-      <meta itemprop="name" content="Copcin">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Copcin's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/11/04/10/17/18/" class="post-title-link" itemprop="url">C++ 极速复习</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-11-04 10:17:18" itemprop="dateCreated datePublished" datetime="2023-11-04T10:17:18+08:00">2023-11-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-11-12 05:39:32" itemprop="dateModified" datetime="2023-11-12T05:39:32+08:00">2023-11-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">编程</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2023/11/04/10/17/18/" class="post-meta-item leancloud_visitors" data-flag-title="C++ 极速复习" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>之前我的编程有关的书本网站啥的全部集体吃灰，但是后面报了几个小比赛。然后想极速复习一下之前学的 C++ 知识。废话不多说~</p>
-<h2 id="1-基础"><a href="#1-基础" class="headerlink" title="1. 基础"></a>1. 基础</h2><h5 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h5><p>（只记有用的！）</p>
-<p>int: ±2^31（-2147483648 ~ 2147483647）</p>
-<p>double: 10 位有效数字</p>
-<p><strong>long long</strong>: ±2^63（-9223372036854775808 ~ 9223372036854775807）</p>
-<p>unsigned 正数范围加倍，不能存储负数。</p>
-<p>（超出范围会<strong>溢出</strong>，所以，<del><strong>不开 long long 见祖宗</strong></del>）</p>
-<h5 id="操作符优先级"><a href="#操作符优先级" class="headerlink" title="操作符优先级"></a>操作符优先级</h5><p><del>先乘除后加减</del></p>
-<p>&amp;&amp; &gt; ||</p>
-<p>% &gt; + -</p>
-<p>&amp;&amp; || &gt; ? :（三元运算符）</p>
-<p>实在不会<strong>加括号</strong></p>
-<h5 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h5><p>(类型名)待转换的数，比如 (int)1.2</p>
-<p>（<strong>向下取整</strong>）</p>
-<blockquote>
-<p>其实这是 C 风格，还有 C++ 风格：</p>
-<p>static_cast&lt;类型名&gt;(待转换的数)</p>
-<p>但是 C yyds!!!</p>
-</blockquote>
-<h5 id="printf-scanf"><a href="#printf-scanf" class="headerlink" title="printf scanf"></a>printf scanf</h5><p>（虽然 C++ 出了 cout cin，但是 printf scanf 又快又方便，所以 C yyds）</p>
-<p>它们都在 cstdio 库里。只需要 #include <cstdio> 即可食用。</p>
-<p><strong>printf(“输出内容”,待打印项1,待打印项2……)</strong></p>
-<p>输出内容中 %d %f 之类的可以替换成待打印项。依次替换。其中 %d 替换整型，%f 替换浮点型，%s 替换字符串。</p>
-<p>% 和字母之前可以加点东西，常见的比如加 <strong>.数字</strong>，比如 <strong>%.4d</strong>，它规定输出内容必须为 4 位。若输入不满 4 位用前导 0 填充。但如果是 <strong>%.4f</strong> 浮点型输入，则是小数点后必须为 4 位，若不满 4 位则在其后加 0。</p>
-<p><strong>scanf(“输入内容”,待输入项指针1,待输入项指针2……)</strong></p>
-<p>待输入项必须为指针，所以前面**必须加 &amp;**。</p>
-<p>常见输入内容为读取整型的 %d，浮点型的 %f，但是基本只会用到整型 %d。遇到换行或空格会停止读入。</p>
-<p>如一段代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a, b;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;a, &amp;b);</span><br></pre></td></tr></table></figure>
-
-<p>当输入：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3 5</span><br></pre></td></tr></table></figure>
-
-<p>则 a&#x3D;3，b&#x3D;5，</p>
-<p>当输入：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
-
-<p>也是 a&#x3D;3，b&#x3D;5。</p>
-<p>scanf 也有类似的 %.4d 之类的操作，不过不常用。</p>
-<h5 id="while"><a href="#while" class="headerlink" title="while"></a>while</h5><p>当 while 后所接表达式<strong>为真</strong>时，继续循环。</p>
-<p>（虽然这很弱智，但是之前我真的弱智地以为 while 后面接的是假表达式时才继续循环）</p>
-<h2 id="2-指针与内存"><a href="#2-指针与内存" class="headerlink" title="2. 指针与内存"></a>2. 指针与内存</h2><h5 id="指针初始化"><a href="#指针初始化" class="headerlink" title="指针初始化"></a>指针初始化</h5><p>使用 *<em>变量类型名 <em>指针名 &#x3D; 变量</em></em> 初始化，如 int *ptr &#x3D; &amp;a。</p>
-<p>初始化之后 ptr 是 a 的内存地址。</p>
-<h5 id="解引用"><a href="#解引用" class="headerlink" title="解引用"></a>解引用</h5><p>使用 <strong>*指针名</strong> 解引用，如 *ptr 取得 ptr 所指变量的值。可能要与指针初始化的情况做区分。</p>
-<h5 id="取地址"><a href="#取地址" class="headerlink" title="取地址"></a>取地址</h5><p>使用 <strong>&amp;指针名</strong> 取地址，即初始化指针时用的那个 &amp;。特别的，数组无需取地址，例如 int *ptr &#x3D; arr 即可。</p>
-<h5 id="memset"><a href="#memset" class="headerlink" title="memset"></a>memset</h5><p>（其实还有 malloc free 或 new delete 创建动态数组的函数，但是其实没啥大用处）</p>
-<p>memset 是一个挺牛的函数，它可以批量为数组赋值。**用法为 memset(数组名,需要批量赋值的值,sizeof(数组名))**。memset 也支持为二维数组批量复制。但是 memset 只能批量赋 0 或 -1（据说 ASCII 字符也可以，没试过）。</p>
-<p>比如为一个数组 arr 批量赋值 0：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> arr[<span class="number">100</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(arr,<span class="number">0</span>,<span class="built_in">sizeof</span>(arr));</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出结果全是 0。</p>
-<h2 id="3-函数有关"><a href="#3-函数有关" class="headerlink" title="3. 函数有关"></a>3. 函数有关</h2><h5 id="传参有关"><a href="#传参有关" class="headerlink" title="传参有关"></a>传参有关</h5><p>默认的传参形式不能改变实参，因为函数接收到的参数实际上是拷贝过的，作用域的问题。</p>
-<p>然后有人在 C 语言里就使用指针传参以达到改变实参的效果，原理简单易懂：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 一个利用指针传参实现的小交换函数</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">swap</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> *b)</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">// 注意区别函数定义的 * 和下面的 *</span></span><br><span class="line">    <span class="type">int</span> temp = *a;</span><br><span class="line">    *a = *b;</span><br><span class="line">    *b = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">3</span>, b = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d %d\n&quot;</span>, a, b);</span><br><span class="line">    <span class="built_in">swap</span>(&amp;a, &amp;b); <span class="comment">// 这里要传地址</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d %d\n&quot;</span>, a, b);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>当然这种方法被 C++ 的引用传参取代了，虽然并不是很好理解。其实只是换了种写法，原理不变：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 这是利用引用传参实现的交换函数版本</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">swap</span><span class="params">(<span class="type">int</span> &amp;a, <span class="type">int</span> &amp;b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> temp = a;</span><br><span class="line">    a = b;</span><br><span class="line">    b = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">3</span>, b = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d %d\n&quot;</span>, a, b);</span><br><span class="line">    <span class="built_in">swap</span>(a, b); <span class="comment">// 这里无需传地址</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d %d\n&quot;</span>, a, b);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>两者输出结果均是：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span> <span class="number">5</span></span><br><span class="line"><span class="number">5</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
+        
 
 
-
-<h5 id="内联函数"><a href="#内联函数" class="headerlink" title="内联函数"></a>内联函数</h5><p>通常用于短函数，用于提升代码可读性。它的效果是在编译后将函数的代码直接替换至调用处。使用方法直接在函数定义前面加上 inline。这通常用于卡常数（但其实没什么用）</p>
-<p>但如果你的编译器不听话的话，它也可以不帮你展开。inline 只是一种建议或提示。</p>
-<h2 id="4-结构体"><a href="#4-结构体" class="headerlink" title="4. 结构体"></a>4. 结构体</h2><h5 id="结构体的使用"><a href="#结构体的使用" class="headerlink" title="结构体的使用"></a>结构体的使用</h5><p><del>由于 OOP 对于 OI 变态的时间限制来说<strong>实在太慢</strong></del>，故不复习有关面向对象内容。但是 C++ 中提供了一个类似的东西：结构体。它和类的功能几乎完全相同。</p>
-<p>面向对象应该没人不会吧，就跟创建对象一模一样。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> classNum;</span><br><span class="line">    <span class="type">int</span> ID;</span><br><span class="line">&#125;; <span class="comment">// 分号千万不能少</span></span><br></pre></td></tr></table></figure>
-
-<p>结构体中也可以定义成员函数，和类一样。</p>
-<p>在结构体定义分号前可以直接创建一个实例：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> classNum;</span><br><span class="line">    <span class="type">int</span> ID;</span><br><span class="line">&#125; xiaoMing = &#123;<span class="number">3</span>, <span class="number">5</span>&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>或者在其它地方创建实例：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> classNum;</span><br><span class="line">    <span class="type">int</span> ID;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Student xiaoMing = &#123;<span class="number">3</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>结构体中也可以轻松访问成员变量：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> classNum;</span><br><span class="line">    <span class="type">int</span> ID;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Student xiaoMing = &#123;<span class="number">3</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, xiaoMing.classNum);</span><br><span class="line">    xiaoMing.classNum = <span class="number">4</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, xiaoMing.classNum);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="结构体与普通函数配合使用"><a href="#结构体与普通函数配合使用" class="headerlink" title="结构体与普通函数配合使用"></a>结构体与普通函数配合使用</h5><p>与上面的代码等价。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> classNum;</span><br><span class="line">    <span class="type">int</span> ID;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printClass</span><span class="params">(Student s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, s.classNum);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">changeClass</span><span class="params">(Student &amp;s, <span class="type">int</span> num)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    s.classNum = num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Student xiaoMing = &#123;<span class="number">3</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    <span class="built_in">printClass</span>(xiaoMing);</span><br><span class="line">    <span class="built_in">changeClass</span>(xiaoMing, <span class="number">4</span>);</span><br><span class="line">    <span class="built_in">printClass</span>(xiaoMing);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="结构体指针"><a href="#结构体指针" class="headerlink" title="结构体指针"></a>结构体指针</h5><p>如果你不小心拿到了一个结构体的指针，你可以使用 -&gt; 代替 . 取得该结构体的成员变量。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> classNum;</span><br><span class="line">    <span class="type">int</span> ID;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Student *xiaoMing;</span><br><span class="line">    xiaoMing-&gt;ID = <span class="number">5</span>; <span class="comment">// 它等价于 (*xiaoming).ID = 5</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, xiaoMing-&gt;ID);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果为 5。</p>
-<h2 id="5-其它"><a href="#5-其它" class="headerlink" title="5. 其它"></a>5. 其它</h2><h5 id="sizeof"><a href="#sizeof" class="headerlink" title="sizeof()"></a>sizeof()</h5><p>是一个长得有点像函数的关键字。它获取变量的存储空间的<strong>字节数</strong>。它也可以获取数据类型的字节数如 sizeof(int)。</p>
-<p>用 sizeof 获取数组的容量时，得到的容量是数组长度 * 数据类型占用的字节数。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> arr[<span class="number">100</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// sizeof() 的返回值为 long unsigned int 类型</span></span><br><span class="line">    <span class="comment">// 所以如果不想看警告可以手动把它转成 int 类型</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, (<span class="type">int</span>)<span class="built_in">sizeof</span>(arr));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出结果为 400。</p>
-<p>用 sizeof 获取结构体的容量时，得到的容量是结构体所有（非静态）成员变量的存储空间的和。</p>
-<h5 id="auto"><a href="#auto" class="headerlink" title="auto"></a>auto</h5><p>这个东西可以用来代替 int float double 等结构类型，让编译器自动帮你寻找适合的结构类型。比如 auto i &#x3D; 3 等价于 int i &#x3D; 3。它主要用于例如 vector&lt;vector<int>&gt; 这样的比较复杂的类型结构之中。</p>
-<h5 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h5><p>字符串在 <string> 包里，需要 using namespace std;。</p>
-<p>字符串的一个冷知识：C++ 中的字符串是 vector<char> 类型。所以 string 可以下标取值，比如 s[3]。</p>
-<h5 id="万能头"><a href="#万能头" class="headerlink" title="万能头"></a>万能头</h5><p>G++ 编译器里的一个神器：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br></pre></td></tr></table></figure>
-
-<p>需要 using namespace std;。它可以引入 C++ 中的所有库，包括 iostream cstdio vector map 等等非常多。它只存在于 GCC 中，不存在于我之前使用的 MSVC 中，所以一直没发现（T_T）。</p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/11/04/10/17/18/" rel="prev" title="C++ 极速复习">
+      <i class="fa fa-chevron-left"></i> C++ 极速复习
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://copws.github.io/2023/10/28/14/12/22/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://gitcode.net/raspi_fans/blog-images/-/raw/master/logo.png">
-      <meta itemprop="name" content="Copcin">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Copcin's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/10/28/14/12/22/" class="post-title-link" itemprop="url">Hexo + NexT 博客评论系统（Valine）配置小记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-10-28 14:12:22" itemprop="dateCreated datePublished" datetime="2023-10-28T14:12:22+08:00">2023-10-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-29 05:37:00" itemprop="dateModified" datetime="2023-10-29T05:37:00+08:00">2023-10-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">折腾笔记</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2023/10/28/14/12/22/" class="post-meta-item leancloud_visitors" data-flag-title="Hexo + NexT 博客评论系统（Valine）配置小记" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>这几天刚配置了船新的 Hexo 博客，然后看到使用的 NexT 主题支持很多评论系统。我尝试配置了一下，发现里面坑太多了，真的挺费周章。于是想<del>水一篇</del>分享一下~</p>
-<h2 id="1-为什么不是……"><a href="#1-为什么不是……" class="headerlink" title="1. 为什么不是……"></a>1. 为什么不是……</h2><p>NexT 主题一共支持如下的几个评论系统：</p>
-<p><img src="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231028142301562.png" alt="image-20231028142301562"></p>
-<p>其中我觉得最后一个 Valine 是最好用的，当然也说一下前面几种方法我踩的坑（这里由于 Disqus 需要魔法所以不讨论）</p>
-<h3 id="1-1-畅言-Livere"><a href="#1-1-畅言-Livere" class="headerlink" title="1.1 畅言 &#x2F; Livere"></a>1.1 畅言 &#x2F; Livere</h3><p>这两个评论系统都是来自专门做评论的公司，只不过<a target="_blank" rel="noopener" href="https://changyan.kuaizhan.com/">畅言</a>是中国（搜狐）的，而 <a target="_blank" rel="noopener" href="https://livere.com/">Livere</a> 是韩国的，音译来必力，不过无需魔法。它们有相同的特点：配置简单，日常使用免费，但是需要登录评论公司或其它的账号（比如畅言需要登录畅言或手机号、微信等账号才能发表评论）才能评论。</p>
-<p>再者，畅言的评论系统看起来是真的有点…古老……</p>
-<p><img src="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231028144309364.png" alt="image-20231028144309364"></p>
-<p>反正如果你不想折腾，并且不担心读者体验，可以尝试使用它们。安装方法很懒人，直接在它们的网站上注册免费版，然后把 appid 和 appkey 复制粘贴至 NexT 的 _config.yml 即可。</p>
-<h3 id="1-2-Gitalk-Gitment"><a href="#1-2-Gitalk-Gitment" class="headerlink" title="1.2 Gitalk &#x2F; Gitment"></a>1.2 Gitalk &#x2F; Gitment</h3><p>这两个是基于 GitHub Issues 的评论系统。NexT 貌似只支持 Gitalk。它们可以在 GitHub 上轻松找到。它们几乎是完美的：只需登录 GitHub 即可评论（不过貌似对非 IT 博客有些不友好）；基于 GitHub Issues，无后端，开源，免费，管理方便。</p>
-<p>但是它们有致命的问题：GitHub 自动创建 Issues 的 API 有用量限制，所以只能被迫使用第三方 API。Gitment 面对这个问题直接躺平，而 Gitalk 默认的 API 又随着 Cloudflare 的被墙被迫需要魔法，改 API 我试了很多次也没成功……</p>
-<p><img src="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231028150117154.png" alt="image-20231028150117154"></p>
-<p>所以这个方案我也只能被迫放弃。如果你热爱折腾，并且恰好魔法高强，可以逝世。</p>
-<h3 id="1-3-DisqusJS"><a href="#1-3-DisqusJS" class="headerlink" title="1.3 DisqusJS"></a>1.3 DisqusJS</h3><p>这是国内大神 Sukka 写的一个访问 Disqus“评论基础模式”的评论系统。前文已经说过 Disqus 需要魔法，而 DisqusJS 可以打破魔法。不过它也有一个致命缺点：不能发评论，只能看别人的评论。再者最近好像 DisqusJS 也年久失修，无法正常使用了。</p>
-<p>如果你对 DisqusJS 感兴趣，可以去 <a target="_blank" rel="noopener" href="https://blog.skk.moe/post/disqusjs/">https://blog.skk.moe/post/disqusjs/</a> 看看，但我觉得没啥用……</p>
-<h2 id="2-Valine-配置过程"><a href="#2-Valine-配置过程" class="headerlink" title="2. Valine 配置过程"></a>2. Valine 配置过程</h2><p>最后我选择了最后一个 <a target="_blank" rel="noopener" href="https://valine.js.org/">Valine</a>。Valine 轻量级，无后端，无需登陆账号即可发表评论，且开源免费，无需魔法，并且真的很好看：</p>
-<p><img src="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231029044028914.png" alt="image-20231029044028914"></p>
-<h3 id="2-1-配置流程"><a href="#2-1-配置流程" class="headerlink" title="2.1 配置流程"></a>2.1 配置流程</h3><p>Valine 的配置不是很复杂。它基于 <a target="_blank" rel="noopener" href="https://leancloud.cn/">LeanCloud</a>，所以得先在 LeanCloud 上注册一个账号。注册完可能要实名。</p>
-<p>然后新建一个开发版项目，名字随便填：</p>
-<p><img src="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231029044504174.png" alt="image-20231029044504174"></p>
-<p><img src="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231029044609998.png" alt="image-20231029044609998"></p>
-<p>然后打开设置 - 应用凭证，复制 AppID 与 AppKey：</p>
-<p><img src="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231029044857715.png" alt="image-20231029044857715"></p>
-<p>然后前往设置 - 安全中心，设置一个安全域名，即你的博客所用的域名。Valine 有请求限制，即非安全域名对 LeanCloud 的请求都不会放行，即你不设置安全域名，到时候评论就用不了。但 localhost 不用设置，LeanCloud 自动放行。如下：</p>
-<p><img src="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231029051345932.png" alt="image-20231029051345932"></p>
-<p>然后转到 NexT 的 _config.yml，找到 comments 一栏（大概在第 550 行左右，或者 Ctrl + F），将 active 改成 valine，nav 改成如图所示的样子：</p>
-<p><img src="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231029051717591.png" alt="image-20231029051717591"></p>
-<p>往下滑找到 valine，将 enable 改为 true，然后粘贴 appid 和 appkey：</p>
-<p><img src="https://gitcode.net/raspi_fans/blog-images/-/raw/master/image-20231029052041829.png" alt="image-20231029052041829"></p>
-<p>下面还有几个选项，挑几个好用的说一下：</p>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>默认值</th>
-<th>含义及作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>notify</td>
-<td>false</td>
-<td>邮件提醒你文章被评论了，LeanCloud 的功能</td>
-</tr>
-<tr>
-<td>verify</td>
-<td>false</td>
-<td>好像是是否需要验证码，没试过</td>
-</tr>
-<tr>
-<td>placeholder</td>
-<td>Just go go.</td>
-<td>评论框的默认填充</td>
-</tr>
-<tr>
-<td>guest_info</td>
-<td>nick,mail,link</td>
-<td>评论者可以填写的个人信息。nick 为名字，mail 为邮箱，link 为评论者博客的网址。举个例子，如果你填 <strong>nick,link</strong>，那就不能填写邮箱。</td>
-</tr>
-<tr>
-<td>pageSize</td>
-<td>10</td>
-<td>每一页显示的评论条数</td>
-</tr>
-<tr>
-<td>language</td>
-<td>zh-cn</td>
-<td>语言，支持英语 en 和简体中文 zh-cn</td>
-</tr>
-<tr>
-<td>visitor</td>
-<td>false</td>
-<td>统计文章被阅读过几次。这个功能有点牛，作为一个评论系统竟然实现了统计阅读次数功能~</td>
-</tr>
-<tr>
-<td>comment_count</td>
-<td>true</td>
-<td>是否在博客主页显示评论数</td>
-</tr>
-</tbody></table>
-<p>大功告成！</p>
-<p>P.S 这篇文章同步在 CSDN 博客上。 </p>
-<p>P.P.S 如果你正在我的博客看这篇文章，那么你会在这句话的下面看到 Valine。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://copws.github.io/2023/10/28/08/23/44/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://gitcode.net/raspi_fans/blog-images/-/raw/master/logo.png">
-      <meta itemprop="name" content="Copcin">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Copcin's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/10/28/08/23/44/" class="post-title-link" itemprop="url">开站说明</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-10-28 08:23:44 / 修改时间：08:39:00" itemprop="dateCreated datePublished" datetime="2023-10-28T08:23:44+08:00">2023-10-28</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B0%8F%E7%AB%99%E6%9C%89%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">小站有关</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2023/10/28/08/23/44/" class="post-meta-item leancloud_visitors" data-flag-title="开站说明" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>大家好，这是一份简单的开站说明，今天开始我的 GitHub Pages 博客就正式开站了~</p>
-<h2 id="有其它博客吗？"><a href="#有其它博客吗？" class="headerlink" title="有其它博客吗？"></a>有其它博客吗？</h2><p>其实作者还有一个 CSDN 博客 <a target="_blank" rel="noopener" href="https://blog.csdn.net/raspi_fans">https://blog.csdn.net/raspi_fans</a> ，上面主要写关于 IT 的内容，但由于素材匮乏，同时也不太想花太多时间精力写质量比较高的长文，于是 CSDN 博客停更了快 1 年（当然后面肯定会补上的……）</p>
-<h2 id="发些什么？"><a href="#发些什么？" class="headerlink" title="发些什么？"></a>发些什么？</h2><p>这个博客啥都发，包括但不限于编程语言及算法，有关系统折腾和树莓派的一些有的没的，还有一些中高考牲可能需要的一些学习笔记。而 CSDN 我就选一些自己觉得还可以的 IT 博客并且心情好的时候发吧……</p>
-<h2 id="有关小站本身的一些东西"><a href="#有关小站本身的一些东西" class="headerlink" title="有关小站本身的一些东西"></a>有关小站本身的一些东西</h2><p>首先这个站点是在 GitHub Pages 上部署的（其实看链接也能看得出来），博客用的 Hexo 部署。我用的简洁的 NexT + Pisces 主题。</p>
-<p>虽然这是个静态博客，但是普通博客有的它也有，比如分类、存档、标签，甚至评论系统。评论系统我使用 Valine，之前试过畅言、Gitalk、Disqusjs、Gitment 还有 Livere 都没有 Valine 效果好，改天专门写一篇有关这个的。</p>
-<p>另外，图床使用 GitCode 仓库（要不是 GitHub 魔法气息浓郁……）</p>
-<p>P.S. 左边的 Stop 作名词其实是汽车停靠站的意思，不是停止（T_T）</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://copws.github.io/2023/10/28/07/54/17/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://gitcode.net/raspi_fans/blog-images/-/raw/master/logo.png">
-      <meta itemprop="name" content="Copcin">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Copcin's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/10/28/07/54/17/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-10-28 07:54:17 / 修改时间：06:21:04" itemprop="dateCreated datePublished" datetime="2023-10-28T07:54:17+08:00">2023-10-28</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B0%8F%E7%AB%99%E6%9C%89%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">小站有关</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2023/10/28/07/54/17/" class="post-meta-item leancloud_visitors" data-flag-title="Hello World" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -961,6 +519,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Notion-%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">1. Notion 数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-text">1.1 数据库是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E9%A1%B5%E9%9D%A2%E5%B1%9E%E6%80%A7"><span class="nav-text">1.2 页面属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%8F%92%E4%BB%B6"><span class="nav-text">2. 创建你的第一个插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%85%88%E5%86%B3%E6%9D%A1%E4%BB%B6"><span class="nav-text">2.1 先决条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%9C%A8-Notion-%E4%B8%AD%E5%88%9B%E5%BB%BA%E6%8F%92%E4%BB%B6"><span class="nav-text">2.2 在 Notion 中创建插件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Notion-%E9%A1%B5%E9%9D%A2-API"><span class="nav-text">3. Notion 页面 API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E8%AF%BB%E5%8F%96%E9%A1%B5%E9%9D%A2%E4%BF%A1%E6%81%AF"><span class="nav-text">3.1 读取页面信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E8%AF%BB%E5%8F%96%E9%A1%B5%E9%9D%A2%E4%BF%A1%E6%81%AF"><span class="nav-text">3.2 读取页面信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E7%9A%84%E9%98%85%E8%AF%BB"><span class="nav-text">3.3 官方文档的阅读</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Notion-%E6%95%B0%E6%8D%AE%E5%BA%93-API"><span class="nav-text">4. Notion 数据库 API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BF%A1%E6%81%AF"><span class="nav-text">4.1 读取数据库信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BF%A1%E6%81%AF"><span class="nav-text">4.2 查询数据库信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Notion-%E5%AF%8C%E6%96%87%E6%9C%AC"><span class="nav-text">5. Notion 富文本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E5%AE%9E%E6%88%98"><span class="nav-text">6. 实战</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
